@@ -5,7 +5,7 @@ import aiohttp_jinja2
 import jinja2
 
 
-async def make_app():
+def make_app():
     logging.basicConfig(level=logging.DEBUG)
 
     app = web.Application()
@@ -23,7 +23,7 @@ async def make_app():
     return app
 
 
-async def cleanup_app(app):
+def cleanup_app(app):
     for ws in app['websockets'].values():
-        await ws.close()
+        ws.close()
     app['websockets'].clear()
