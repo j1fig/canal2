@@ -6,7 +6,7 @@ from track import factory
 
 def listen_and_serve():
     app = factory.make_app()
-    web.run_app(app)
+    web.run_app(app, port=80)
 
 
 if __name__ == '__main__':
