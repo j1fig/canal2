@@ -2,6 +2,7 @@ from aiohttp import web
 import aiohttp_jinja2
 import jinja2
 
+from track import settings
 from track.views import index, ws
 
 
@@ -15,9 +16,9 @@ async def make_app():
         app, loader=jinja2.PackageLoader('track', 'templates')
     )
 
-    # app.add_routes([web.get('/', index)])
     app.router.add_get('/', index)
     app.router.add_get('/ws', ws)
+    app.add_routes([web.static('/static', settings.STATIC_DIR)])
 
     return app
 

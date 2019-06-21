@@ -5,6 +5,9 @@ import aiohttp_jinja2
 from aiohttp import web
 from faker import Faker
 
+from track import settings
+
+
 log = logging.getLogger(__name__)
 
 
@@ -14,7 +17,14 @@ def get_random_name():
 
 
 async def index(request):
-    return aiohttp_jinja2.render_template('index.html', request, {})
+    return aiohttp_jinja2.render_template(
+        'index.html',
+        request,
+        context={
+            'static_url': settings.STATIC_URL,
+            'env': settings.ENV,
+        }
+    )
 
 
 async def ws(request):
