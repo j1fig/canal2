@@ -18,7 +18,7 @@ async def make_app():
 
     app.router.add_get('/', index)
     app.router.add_get('/ws', ws)
-    app.add_routes([web.static('/static', settings.STATIC_DIR)])
+    app.add_routes([web.static('/static', settings.STATIC_DIR, append_version=True)])
 
     return app
 
