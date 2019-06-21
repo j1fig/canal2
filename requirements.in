@@ -1,5 +1,9 @@
+SQLAlchemy
 aiohttp
 aiohttp_jinja2
+aiopg
+alembic
 faker
 gunicorn
+psycopg2
 uvloop
