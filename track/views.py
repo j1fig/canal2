@@ -14,10 +14,14 @@ def get_random_name():
 
 
 async def index(request):
+    return aiohttp_jinja2.render_template('index.html', request, {})
+
+
+async def ws(request):
     ws_current = web.WebSocketResponse()
     ws_ready = ws_current.can_prepare(request)
     if not ws_ready.ok:
-        return aiohttp_jinja2.render_template('index.html', request, {})
+        return web.json_response({'result': 'NOK'})
 
     await ws_current.prepare(request)
 

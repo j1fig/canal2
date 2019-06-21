@@ -1,13 +1,11 @@
-import logging
-
 from aiohttp import web
 import aiohttp_jinja2
 import jinja2
 
+from track.views import index, ws
+
 
 async def make_app():
-    logging.basicConfig(level=logging.DEBUG)
-
     app = web.Application()
     app['websockets'] = {}
 
@@ -17,9 +15,9 @@ async def make_app():
         app, loader=jinja2.PackageLoader('track', 'templates')
     )
 
-    from track.views import index
-    # app.add_routes([web.get('/ws', index)])
+    # app.add_routes([web.get('/', index)])
     app.router.add_get('/', index)
+    app.router.add_get('/ws', ws)
 
     return app
 
