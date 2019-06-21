@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Datetime, func
+from sqlalchemy import Column, DateTime, func
 
 
 class TimestampMixin(object):

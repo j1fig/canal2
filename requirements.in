@@ -1,3 +1,4 @@
+-e .
 SQLAlchemy
 aiohttp
 aiohttp_jinja2
