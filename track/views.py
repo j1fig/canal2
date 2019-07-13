@@ -18,7 +18,7 @@ def get_random_name():
 
 async def index(request):
     return aiohttp_jinja2.render_template(
-        'index.html',
+        'base.html',
         request,
         context={
             'static_url': settings.STATIC_URL,

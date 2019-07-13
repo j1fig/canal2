@@ -1,8 +1,8 @@
 import pytest
-from track.main import init_app
+from track import factory
 
 
 @pytest.fixture
 async def client(test_client):
-    app = await init_app()
+    app = await factory.make_app()
     return await test_client(app)
